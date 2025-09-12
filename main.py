@@ -169,8 +169,8 @@ with col2:
                                 st.markdown(
                                     f"<li>{treat}</li>", unsafe_allow_html=True)
                             st.markdown("</ul>", unsafe_allow_html=True)
-                            st.markdown(
-                                f"<div class='timestamp'>🕒 {result.get('analysis_timestamp', 'N/A')}</div>", unsafe_allow_html=True)
+                            #st.markdown(
+                             #   f"<div class='timestamp'>🕒 {result.get('analysis_timestamp', 'N/A')}</div>", unsafe_allow_html=True)
                             st.markdown("</div>", unsafe_allow_html=True)
                         else:
                             # Healthy leaf case
@@ -184,8 +184,8 @@ with col2:
                                 f"<span class='info-badge'>Status: {result.get('disease_type', 'healthy')}</span>", unsafe_allow_html=True)
                             st.markdown(
                                 f"<span class='info-badge'>Confidence: {result.get('confidence', 'N/A')}%</span>", unsafe_allow_html=True)
-                            st.markdown(
-                                f"<div class='timestamp'>🕒 {result.get('analysis_timestamp', 'N/A')}</div>", unsafe_allow_html=True)
+                            #st.markdown(
+                               # f"<div class='timestamp'>🕒 {result.get('analysis_timestamp', 'N/A')}</div>", unsafe_allow_html=True)
                             st.markdown("</div>", unsafe_allow_html=True)
                     else:
                         st.error(f"API Error: {response.status_code}")
