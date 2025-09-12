@@ -38,7 +38,7 @@ class DiseaseAnalysisResult:
     symptoms: List[str]
     possible_causes: List[str]
     treatment: List[str]
-    analysis_timestamp: str = datetime.now().astimezone().isoformat()
+    
 
 
 class LeafDiseaseDetector:
@@ -269,17 +269,23 @@ class LeafDiseaseDetector:
             logger.info("Response parsed successfully as JSON")
 
             # Validate required fields and create result object
+            treatment_list = disease_data.get('treatment', [])
+
+# ✅ Add "spray" if confidence > 75
+            if float(disease_data.get('confidence', 0)) > 75:
+                treatment_list.append("spray")
+            
             return DiseaseAnalysisResult(
-                disease_detected=bool(
-                    disease_data.get('disease_detected', False)),
+                disease_detected=bool(disease_data.get('disease_detected', False)),
                 disease_name=disease_data.get('disease_name'),
                 disease_type=disease_data.get('disease_type', 'unknown'),
                 severity=disease_data.get('severity', 'unknown'),
                 confidence=float(disease_data.get('confidence', 0)),
                 symptoms=disease_data.get('symptoms', []),
                 possible_causes=disease_data.get('possible_causes', []),
-                treatment=disease_data.get('treatment', [])
+                treatment=treatment_list
             )
+
 
         except json.JSONDecodeError:
             logger.warning(
