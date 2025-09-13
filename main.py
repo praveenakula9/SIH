@@ -3,7 +3,7 @@ import requests
 
 # Set Streamlit theme to light and wide mode
 st.set_page_config(
-    page_title="Leaf Disease Detection",
+    page_title="Crop Disease Detection",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
